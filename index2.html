@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chapitre 4 : Introduction à JavaScript</title>
+<style>
+:root{--bg:#f5f7fb;--fg:#1f2937;--card:#fff;--code:#eef1f6;--mut:#6b7280;--c1:#2E75B6;--c2:#7B4FBF;--c3:#E67E22;--c4:#16A085;--c5:#C0392B;--c6:#2980B9;--c7:#8E44AD;--c8:#D35400;--c9:#27AE60;--c10:#E84393;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#12161d;--fg:#e5e7eb;--card:#1b212b;--code:#10141b;--mut:#9ca3af}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#12161d;--fg:#e5e7eb;--card:#1b212b;--code:#10141b;--mut:#9ca3af}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px 14px 90px}
+.hero{background:linear-gradient(135deg,var(--c1),var(--c2));color:#fff;border-radius:18px;padding:34px 24px;margin-bottom:18px}
+.hero small{letter-spacing:.15em;font-weight:700;opacity:.85}
+.hero h1{margin:6px 0 4px;font-size:2.3rem;line-height:1.1}
+.hero p{margin:6px 0 0;opacity:.95}
+.road{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:0 0 22px}
+.road a{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:10px;padding:8px 10px;color:var(--fg);text-decoration:none;font-size:.9rem;border:1px solid color-mix(in srgb,var(--fg) 10%,transparent)}
+.road b{background:var(--c);color:#fff;border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-size:.8rem}
+section{background:var(--card);border-radius:16px;margin:0 0 20px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+section>h2{margin:0;background:var(--c);color:#fff;padding:14px 18px;font-size:1.2rem;display:flex;justify-content:space-between;align-items:center;gap:10px}
+section>h2 span{font-size:.72rem;font-weight:500;opacity:.9;white-space:nowrap}
+.in{padding:6px 18px 14px}
+.m{margin:14px 0;padding:10px 14px;border-left:5px solid var(--c);background:color-mix(in srgb,var(--c) 14%,var(--card));border-radius:0 10px 10px 0;font-style:italic}
+h3{color:var(--c);margin:18px 0 4px;font-size:1.02rem}
+pre{background:var(--code);padding:12px 14px;border-radius:10px;overflow-x:auto;font:13.5px/1.5 ui-monospace,Menlo,Consolas,monospace;margin:8px 0}
+code{background:var(--code);padding:1px 6px;border-radius:5px;font-size:.88em}
+.w{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{background:var(--c);color:#fff;text-align:left;padding:7px 10px}
+td{padding:7px 10px;border-bottom:1px solid color-mix(in srgb,var(--fg) 12%,transparent)}
+tr:nth-child(even) td{background:color-mix(in srgb,var(--c) 7%,var(--card))}
+.tip{background:color-mix(in srgb,#f5b301 18%,var(--card));border:1px solid #e0b84a;border-radius:10px;padding:9px 13px;margin:10px 0;font-size:.95rem}
+.demo{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:8px 0}
+.demo button{background:var(--c);color:#fff;border:0;border-radius:10px;padding:9px 16px;font:inherit;cursor:pointer}
+.fin{background:linear-gradient(135deg,var(--c4),var(--c9));color:#fff;border-radius:18px;padding:26px 22px;margin:8px 0 18px}
+.fin h2{margin:0 0 6px;font-size:1.8rem}
+.fin p{margin:0}
+ol.d{padding-left:22px}ol.d li{margin:6px 0}
+#theme{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;background:var(--c1);color:#fff;border:0;border-radius:999px;padding:13px 20px;font:600 .95rem system-ui,sans-serif;box-shadow:0 6px 18px rgba(0,0,0,.3);cursor:pointer}
+#theme:active{transform:scale(.97)}
+</style>
+</head>
+<body>
+<main>
+<div class="hero"><small>COURS DE DÉVELOPPEMENT WEB</small><h1>Chapitre 4<br>Introduction à JavaScript</h1><p>Résumé détaillé : explications simples, exemples et mini-défis. Appuie sur le bouton 🎨 pour changer les couleurs !</p></div>
+<nav class="road" id="road"></nav>
+
+<section id="s1" style="--c:var(--c1)"><h2>1. Définition <span>Étape 1 / 10</span></h2><div class="in">
+<p class="m">★ Tout expert a un jour écrit son tout premier alert(). Le tien, c’est maintenant !</p>
+<p><b>JavaScript</b> est un langage de script <b>interprété</b> (lu et exécuté ligne par ligne) et <b>côté client</b> (il s’exécute dans le navigateur, pas sur le serveur). HTML = structure, CSS = style, JavaScript = <b>comportement</b>.</p>
+<ul><li>Modifier le contenu HTML et CSS sans recharger la page.</li><li>Vérifier les formulaires (ex. un champ vide).</li><li>Rendre la page interactive : clics, saisies, survol…</li></ul></div></section>
+
+<section id="s2" style="--c:var(--c2)"><h2>2. Intégration <span>Étape 2 / 10</span></h2><div class="in">
+<p class="m">★ Un petit fichier, une petite balise… et ta page devient vivante.</p>
+<p><b>Inline</b> : le code est entre les balises <code>&lt;script&gt;</code> et <code>&lt;/script&gt;</code>. <b>Externe</b> : le code est dans un fichier <code>.js</code>, lié avec l’attribut <code>src</code>.</p>
+<pre>&lt;script&gt;
+  alert("Bonjour !");
+&lt;/script&gt;
+
+&lt;script src="script.js"&gt;&lt;/script&gt;</pre>
+<div class="tip"><b>À retenir :</b> la méthode externe est la meilleure pratique : code mieux organisé et réutilisable.</div></div></section>
+
+<section id="s3" style="--c:var(--c3)"><h2>3. Les variables <span>Étape 3 / 10</span></h2><div class="in">
+<p class="m">★ Une variable peut changer, mais ta motivation doit rester une const !</p>
+<p>Une variable est une <b>boîte étiquetée</b> en mémoire : un nom + une valeur.</p>
+<pre>let age;            // déclaration
+age = 20;           // affectation
+let ville = "Meknès";  // les deux en une ligne
+const PI = 3.14;    // constante : PI = 3.15 provoque une erreur</pre>
+<div class="w"><table><tr><th>Type</th><th>Description</th><th>Exemple</th></tr>
+<tr><td>Number</td><td>nombres entiers ou décimaux</td><td><code>let prix = 9.99;</code></td></tr>
+<tr><td>String</td><td>texte entre guillemets</td><td><code>let nom = "Sara";</code></td></tr>
+<tr><td>Boolean</td><td>true ou false</td><td><code>let majeur = true;</code></td></tr></table></div></div></section>
+
+<section id="s4" style="--c:var(--c4)"><h2>4. Les opérateurs <span>Étape 4 / 10</span></h2><div class="in">
+<p class="m">★ Chaque erreur est une leçon déguisée : un bug corrigé fait de toi un meilleur développeur.</p>
+<h3>Arithmétiques</h3>
+<div class="w"><table><tr><th>Op.</th><th>Rôle</th><th>Exemple</th></tr>
+<tr><td><code>+ - * /</code></td><td>les 4 opérations</td><td><code>5 / 2</code> donne 2.5</td></tr>
+<tr><td><code>%</code></td><td>modulo (reste)</td><td><code>5 % 2</code> donne 1</td></tr>
+<tr><td><code>**</code></td><td>puissance</td><td><code>5 ** 2</code> donne 25</td></tr></table></div>
+<h3>Comparaison (résultat : true ou false)</h3>
+<p><code>&lt; &gt; &lt;= &gt;= != !==</code> et surtout : <code>==</code> compare la <b>valeur</b>, <code>===</code> compare la <b>valeur ET le type</b>.</p>
+<pre>5 == "5"   // true
+5 === "5"  // false</pre>
+<div class="tip"><b>À retenir :</b> préfère <code>===</code> et <code>!==</code> pour éviter les surprises.</div>
+<h3>Logiques</h3>
+<p><code>&amp;&amp;</code> ET (les deux vraies), <code>||</code> OU (au moins une vraie), <code>!</code> NON (inverse).</p>
+<h3>Autres</h3>
+<pre>x++; x--;          // +1 / -1
+x += 3;            // x = x + 3  (aussi -= *= /= %= **=)
+"Bonjour " + nom   // concaténation</pre></div></section>
+
+<section id="s5" style="--c:var(--c5)"><h2>5. Les boîtes de dialogue <span>Étape 5 / 10</span></h2><div class="in">
+<p class="m">★ Poser des questions, c’est le début de l’apprentissage, même pour un programme !</p>
+<ul><li><code>alert()</code> : affiche un message.</li><li><code>confirm()</code> : demande confirmation, retourne true ou false.</li><li><code>prompt()</code> : demande une saisie, retourne <b>toujours du texte</b>.</li></ul>
+<pre>let a = prompt("Entrez un nombre");  // "10" (texte)
+let n = parseInt(a);                 // 10 (entier)
+if (Number.isNaN(n)) alert("Pas un nombre !");</pre>
+<p><code>parseInt()</code> convertit en entier, <code>parseFloat()</code> en réel, <code>Number.isNaN()</code> vérifie si la conversion a échoué.</p></div></section>
+
+<section id="s6" style="--c:var(--c6)"><h2>6. Les structures sélectives <span>Étape 6 / 10</span></h2><div class="in">
+<p class="m">★ SI tu continues à pratiquer, ALORS tu réussiras. Et le else ? Il n’existe pas !</p>
+<pre>if (note &gt;= 16) {
+  alert("Très bien");
+} else if (note &gt;= 10) {
+  alert("Admis");
+} else {
+  alert("Ajourné");
+}
+
+switch (jour) {
+  case 1: alert("Lundi"); break;
+  case 2: alert("Mardi"); break;
+  default: alert("Autre jour");
+}</pre>
+<p><code>if</code> = une condition, <code>if…else</code> = deux possibilités, <code>else if</code> = plusieurs conditions. <code>switch</code> compare <b>une variable</b> à plusieurs valeurs : <code>break</code> sort du switch, <code>default</code> = aucun cas ne correspond.</p></div></section>
+
+<section id="s7" style="--c:var(--c7)"><h2>7. Les structures itératives <span>Étape 7 / 10</span></h2><div class="in">
+<p class="m">★ Répète, répète, répète : c’est comme ça qu’on devient bon, dans la vie comme dans une boucle for.</p>
+<div class="w"><table><tr><th>Boucle</th><th>Quand ?</th></tr>
+<tr><td><code>for</code></td><td>nombre de répétitions connu (initialisation, condition, incrémentation)</td></tr>
+<tr><td><code>while</code></td><td>tant que la condition est vraie (testée avant)</td></tr>
+<tr><td><code>do…while</code></td><td>au moins une exécution (testée après)</td></tr></table></div>
+<pre>for (let i = 1; i &lt;= 5; i++) { console.log(i); }
+
+let j = 1;
+while (j &lt;= 5) { console.log(j); j++; }
+
+let k = 1;
+do { console.log(k); k++; } while (k &lt;= 5);</pre>
+<div class="tip"><b>À retenir :</b> oublier <code>i++</code> crée une boucle infinie qui bloque la page.</div></div></section>
+
+<section id="s8" style="--c:var(--c8)"><h2>8. Les fonctions <span>Étape 8 / 10</span></h2><div class="in">
+<p class="m">★ Écris une fonction une seule fois, utilise-la mille fois. Comme tes efforts !</p>
+<p>Une fonction est un bloc d’instructions réutilisable. <code>function</code> la déclare, les <b>paramètres</b> sont les données reçues, <code>return</code> renvoie un résultat, et l’<b>appel</b> l’exécute.</p>
+<pre>function direBonjour() { alert("Bonjour"); }        // 1. sans param, sans retour
+function saluer(nom) { alert("Bonjour " + nom); }   // 2. avec param, sans retour
+function getAnnee() { return 2026; }                // 3. sans param, avec retour
+function somme(x, y) { return x + y; }              // 4. avec param, avec retour
+
+let r = somme(3, 4);   // r vaut 7</pre></div></section>
+
+<section id="s9" style="--c:var(--c9)"><h2>9. Le DOM <span>Étape 9 / 10</span></h2><div class="in">
+<p class="m">★ Tu as maintenant le pouvoir de transformer une page web. Amuse-toi, ose !</p>
+<p>Le <b>DOM</b> (Document Object Model) permet à JavaScript d’accéder aux éléments HTML et de modifier leur contenu, leur structure et leur style.</p>
+<div class="w"><table><tr><th>Méthode</th><th>Résultat</th></tr>
+<tr><td><code>getElementById()</code></td><td>un élément par son id</td></tr>
+<tr><td><code>querySelector()</code></td><td>le premier élément qui correspond à un sélecteur CSS</td></tr>
+<tr><td><code>getElementsByClassName()</code></td><td>tous les éléments d’une classe</td></tr>
+<tr><td><code>getElementsByTagName()</code></td><td>tous les éléments d’une balise</td></tr></table></div>
+<p><b>Propriétés :</b> <code>textContent</code> (texte), <code>innerHTML</code> (HTML), <code>value</code> (valeur d’un champ), <code>id</code>, <code>tagName</code>.</p>
+<pre>let t = document.getElementById("titre");
+t.textContent = "Nouveau titre";
+t.style.color = "red";
+t.style.cssText = "color: blue; font-size: 20px;";
+t.classList.add("important");
+t.classList.remove("important");</pre></div></section>
+
+<section id="s10" style="--c:var(--c10)"><h2>10. Les événements <span>Étape 10 / 10</span></h2><div class="in">
+<p class="m">★ Dernière étape ! Tu es à un clic de réussir ce chapitre.</p>
+<p>Un événement est une action détectée par le navigateur. <code>addEventListener()</code> associe une fonction à un événement.</p>
+<div class="w"><table><tr><th>Événement</th><th>Quand ?</th></tr>
+<tr><td><code>click</code> / <code>dblclick</code></td><td>clic / double clic</td></tr>
+<tr><td><code>mouseover</code></td><td>survol de la souris</td></tr>
+<tr><td><code>submit</code> / <code>reset</code></td><td>envoi / réinitialisation d’un formulaire</td></tr>
+<tr><td><code>input</code></td><td>saisie dans un champ</td></tr>
+<tr><td><code>focus</code> / <code>blur</code></td><td>champ activé / focus perdu</td></tr></table></div>
+<pre>element.addEventListener("click", function() {
+  // Instructions
+});</pre>
+<h3>Essaie par toi-même</h3>
+<div class="demo"><button id="btn">Clique ici</button><span id="out">Texte initial</span></div>
+<pre>btn.addEventListener("click", function() {
+  out.textContent = "Tu as cliqué !";
+});</pre></div></section>
+
+<div class="fin"><h2>Félicitations ! 🎉</h2><p>Tu as terminé le Chapitre 4. Chaque notion est une brique de plus dans ton parcours de développeur(se).</p></div>
+<section style="--c:var(--c4)"><h2>Mini-défis pour t’entraîner</h2><div class="in"><ol class="d">
+<li><b>Calculatrice :</b> deux <code>prompt()</code>, puis affiche la somme.</li>
+<li><b>Pair ou impair :</b> avec l’opérateur <code>%</code>.</li>
+<li><b>Table de multiplication</b> avec une boucle <code>for</code>.</li>
+<li><b>estMajeur(age)</b> : retourne true ou false.</li>
+<li><b>Bouton magique :</b> change la couleur de fond de la page au clic.</li></ol>
+<p class="m">★ Le meilleur moment pour commencer, c’était hier. Le deuxième meilleur moment, c’est maintenant. — Nta qaddha ! Kemmel b l-3zima.</p></div></section>
+</main>
+<button id="theme" type="button">🎨 Changer les couleurs</button>
+<script>
+var T=[["Arc-en-ciel",["#2E75B6","#7B4FBF","#E67E22","#16A085","#C0392B","#2980B9","#8E44AD","#D35400","#27AE60","#E84393"]],
+["Océan",["#0077B6","#0B7285","#00838F","#1F7A6E","#3A5BD9","#1F6FB2","#0E7490","#1D7874","#2B6CB0","#264653"]],
+["Coucher de soleil",["#D62839","#E4572E","#C96A0A","#C1440E","#B5179E","#D9480F","#C9184A","#D00000","#9D0208","#BA3B0A"]],
+["Forêt",["#2D6A4F","#40916C","#3A5A40","#588157","#386641","#4F772D","#1B7F5C","#31572C","#2F855A","#6B705C"]],
+["Violet bonbon",["#7B2CBF","#9D4EDD","#A63CC4","#D6336C","#B5179E","#C2185B","#7209B7","#560BAD","#9C27B0","#8E44AD"]]];
+var i=0,b=document.getElementById("theme"),r=document.documentElement;
+try{i=parseInt(localStorage.getItem("jstheme"))||0}catch(e){}
+if(i<0||i>=T.length)i=0;
+function apply(){T[i][1].forEach(function(c,k){r.style.setProperty("--c"+(k+1),c)});b.textContent="🎨 "+T[i][0]+" · changer";try{localStorage.setItem("jstheme",i)}catch(e){}}
+b.addEventListener("click",function(){i=(i+1)%T.length;apply()});
+apply();
+var N=["Définition","Intégration","Variables","Opérateurs","Dialogues","Conditions","Boucles","Fonctions","Le DOM","Événements"];
+document.getElementById("road").innerHTML=N.map(function(n,k){return '<a href="#s'+(k+1)+'" style="--c:var(--c'+(k+1)+')"><b>'+(k+1)+'</b>'+n+'</a>'}).join("");
+document.getElementById("btn").addEventListener("click",function(){document.getElementById("out").textContent="Tu as cliqué !"});
+</script>
+</body>
+</html>
